@@ -11,10 +11,10 @@ app.use(
   })
 );
 app.use(express.json());
-
+//middleware
 const port =process.env.PORT || 5001;
 
-// mongodb uri and client
+// mongodb uri and client and set password and admin
 
 const uri ="mongodb+srv://DrawPrintDreamAdmin:INEwwJsqYjl17d6c@cluster0.oinhkx3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const client = new MongoClient(uri);
