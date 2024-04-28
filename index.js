@@ -1,6 +1,7 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const cors = require("cors");
+const dotenv = require('dotenv').config()
 
 // medialWare
 const app = express();
@@ -14,12 +15,12 @@ app.use(express.json());
 const port =process.env.PORT || 5001;
 
 // mongodb uri and client
-const uri =
-  "mongodb+srv://bdsarajit499:bdsarajit123@cluster0.qhafzaz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+const uri ="mongodb+srv://DrawPrintDreamAdmin:INEwwJsqYjl17d6c@cluster0.oinhkx3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const client = new MongoClient(uri);
 // user collection
-const database = client.db("userDB");
-const userCollection = database.collection("users");
+const database = client.db("ArtAndCraftDB");
+const userCollection = database.collection("allArtAndCraf");
 
 app.get("/", (req, res) => {
   res.send("Server is running...");
@@ -28,11 +29,14 @@ app.get("/", (req, res) => {
 async function main() {
   await client.connect();
 
-  app.get("/users", (req, res) => {
+  app.get("/users", async(req, res) => {
     const data = userCollection.find();
-    const result = data.toArray();
-    res.send("user get");
+    const result =await data.toArray();
+    res.send(result);
   });
+
+
+  console.log("database susscessfully")
 }
 
 main();
