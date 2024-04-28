@@ -1,7 +1,7 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const cors = require("cors");
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 
 // medialWare
 const app = express();
@@ -27,12 +27,17 @@ app.get("/", (req, res) => {
 });
 
 async function main() {
-  await client.connect();
+  // await client.connect();
 
   app.get("/users", async(req, res) => {
     const data = userCollection.find();
     const result =await data.toArray();
     res.send(result);
+  });
+  app.get("/allArt", async(req, res) => {
+    const data = userCollection.find();
+    const result =await data.toArray();
+    res.send("get all art");
   });
 
 
