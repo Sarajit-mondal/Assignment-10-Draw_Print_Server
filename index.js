@@ -119,6 +119,17 @@ async function main() {
     res.send(result)
   })
   // delete 
+  app.delete("/category/:item/:id", async (req, res) => {
+    const id = req.params.id;
+    const filter = { _id: new ObjectId(id) }
+    const item = req.params.item;
+  
+    const result = await database.collection(item).deleteOne(filter);
+    res.send(result)
+
+  })
+
+
   console.log("database susscessfully")
 }
 
