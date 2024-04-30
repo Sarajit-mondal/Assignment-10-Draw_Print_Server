@@ -119,15 +119,16 @@ async function main() {
     res.send(result)
   })
   // delete 
-  app.delete("/category/:item/:id", async (req, res) => {
-    const id = req.params.id;
-    const filter = { _id: new ObjectId(id) }
-    const item = req.params.item;
+  // app.delete("/category/:item/:price", async (req, res) => {
+  //    const price = req.params.price;
+  //   const filter = { price: new ObjectId(price) }
+  //    const item = req.params.item;
   
-    const result = await database.collection(item).deleteOne(filter);
-    res.send(result)
+  //    const result = await database.collection(item).deleteOne(filter);
+  //   res.send(result)
+  
 
-  })
+  // })
 
 
   console.log("database susscessfully")
